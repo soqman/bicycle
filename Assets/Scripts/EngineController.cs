@@ -10,7 +10,7 @@ public class EngineController : MonoBehaviour
 
     private float accelerateTime;
     private float brakeTime;
-    
+
     private void Update()
     {
         Accelerate();
@@ -21,7 +21,7 @@ public class EngineController : MonoBehaviour
     {
         if (GameRuntime.input.IsPositiveAxisHeld)
         {
-            gear.AddTorque(settings.accelerateSpeed);
+            gear.AddTorque(-settings.accelerateSpeed);
         }
     }
 
