@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EngineController : MonoBehaviour
+public class EngineController : BaseController
 {
     [SerializeField] private Rigidbody2D gear;
     [SerializeField] private EngineSettings settings;
@@ -11,8 +11,10 @@ public class EngineController : MonoBehaviour
     private float accelerateTime;
     private float brakeTime;
 
-    private void Update()
+    protected override void UpdateWork()
     {
+        base.UpdateWork();
+        
         Accelerate();
         Brake();
     }

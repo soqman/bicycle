@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class BaseInputController : MonoBehaviour
+﻿public class BaseInputController : BaseController
 {
     protected bool isPositiveAxisHeld;
     protected bool isNegativeAxisHeld;

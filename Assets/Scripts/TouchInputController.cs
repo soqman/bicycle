@@ -10,8 +10,10 @@ public class TouchInputController : BaseInputController
 
     private ScreenSide screenSide;
 
-    private void Update()
+    protected override void UpdateWork()
     {
+        base.UpdateWork();
+        
         if (Input.GetMouseButtonDown(0))
         {
             SetScreenSide(Input.mousePosition);
