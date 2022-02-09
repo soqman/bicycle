@@ -2,6 +2,7 @@
 using common;
 using game;
 using modules.bicycle;
+using modules.collisions;
 using modules.fx;
 using modules.input;
 using modules.world;
@@ -22,7 +23,8 @@ namespace managers
             controllers.Add(GameRuntime.fx = GetComponentInChildren<FxController>(true));
             controllers.Add(GameRuntime.collisions = GetComponentInChildren<CollisionsController>(true));
             controllers.Add(GameRuntime.bicycle = GetComponentInChildren<BicycleController>(true));
-            controllers.Add(GameRuntime.session = GetComponentInChildren<SessionController>(true));
+            controllers.Add(GameRuntime.tricks = GetComponentInChildren<TricksController>(true));
+            controllers.Add(GetComponentInChildren<SessionController>(true));
         }
 
         private void Start()
@@ -41,6 +43,6 @@ namespace managers
         public static FxController fx;
         public static CollisionsController collisions;
         public static BicycleController bicycle;
-        public static SessionController session;
+        public static TricksController tricks;
     }
 }

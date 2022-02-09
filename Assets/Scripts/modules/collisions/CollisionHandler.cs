@@ -1,7 +1,7 @@
 using managers;
 using UnityEngine;
 
-namespace modules.bicycle
+namespace modules.collisions
 {
     public class CollisionHandler : MonoBehaviour
     {

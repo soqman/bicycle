@@ -1,4 +1,6 @@
-﻿namespace modules.bicycle
+﻿using modules.bicycle;
+
+namespace modules.collisions
 {
     public class Collision
     {

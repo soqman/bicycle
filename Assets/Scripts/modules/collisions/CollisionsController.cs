@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using common;
 
-namespace modules.bicycle
+namespace modules.collisions
 {
     public class CollisionsController : BaseController
     {
-        public event Action PlayerHurtEvent;
+        public event Action CollisionsUpdate;
 
-        private Collision playerHurtCollision = new Collision(Tag.Player, Tag.Obstacle);
-    
         public enum Tag
         {
             Player,
@@ -23,17 +22,13 @@ namespace modules.bicycle
         public void RegisterCollision(Collision collision)
         {
             collisions.Add(collision);
+            CollisionsUpdate?.Invoke();
         }
 
         public void UnregisterCollision(Collision collision)
         {
             collisions.Remove(collision);
-        }
-
-        protected override void UpdateWork()
-        {
-            base.UpdateWork();
-            CheckPlayer();
+            CollisionsUpdate?.Invoke();
         }
 
         public override void StartWork()
@@ -42,10 +37,17 @@ namespace modules.bicycle
             base.StartWork();
         }
 
-        private void CheckPlayer()
+        public bool CheckCollisions(List<Collision> includeCollisions, List<Collision> excludeCollisions = null)
         {
-            if (!collisions.Contains(playerHurtCollision)) return;
-            PlayerHurtEvent?.Invoke();
+            if (includeCollisions != null && !includeCollisions.All(x => collisions.Contains(x))) return false;
+            if (excludeCollisions != null && excludeCollisions.Any(x => collisions.Contains(x))) return false;
+
+            return true;
+        }
+
+        public bool CheckCollision(Collision collision)
+        {
+            return collisions.Contains(collision);
         }
     }
 }

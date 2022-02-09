@@ -15,6 +15,5 @@ namespace modules.fx
         {
             StopFxEvent?.Invoke(Id);
         }
-
     }
 }
