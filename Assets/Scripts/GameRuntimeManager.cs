@@ -13,6 +13,8 @@ public class GameRuntimeManager : MonoBehaviour
         controllers.Add(GameRuntime.terrain = GetComponentInChildren<TerrainController>(true));
         controllers.Add(GameRuntime.fx = GetComponentInChildren<FxController>(true));
         controllers.Add(GameRuntime.collisions = GetComponentInChildren<CollisionsController>(true));
+        controllers.Add(GameRuntime.bicycle = GetComponentInChildren<BicycleController>(true));
+        controllers.Add(GameRuntime.session = GetComponentInChildren<SessionController>(true));
     }
 
     private void Start()
@@ -30,4 +32,6 @@ public static class GameRuntime
     public static TerrainController terrain;
     public static FxController fx;
     public static CollisionsController collisions;
+    public static BicycleController bicycle;
+    public static SessionController session;
 }

@@ -1,16 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class EngineController : BaseController
 {
     [SerializeField] private Rigidbody2D gear;
     [SerializeField] private EngineSettings settings;
-
-    private float accelerate;
-    private float brake;
-
-    private float accelerateTime;
-    private float brakeTime;
-
+    
     protected override void UpdateWork()
     {
         base.UpdateWork();
@@ -19,9 +14,16 @@ public class EngineController : BaseController
         Brake();
     }
 
+    public override void StartWork()
+    {
+        gear.angularVelocity = 0f;
+        gear.velocity = Vector2.zero;
+        base.StartWork();
+    }
+
     private void Accelerate()
     {
-        if (GameRuntime.input.IsPositiveAxisHeld)
+        if (isStarted && GameRuntime.input.IsPositiveAxisHeld)
         {
             gear.AddTorque(-settings.accelerateSpeed);
         }
@@ -29,7 +31,7 @@ public class EngineController : BaseController
 
     private void Brake()
     {
-        if (GameRuntime.input.IsNegativeAxisHeld)
+        if (isStarted && GameRuntime.input.IsNegativeAxisHeld)
         {
             gear.angularDrag = settings.brakeSpeed;
         }

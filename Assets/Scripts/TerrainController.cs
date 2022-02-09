@@ -8,19 +8,17 @@ public class TerrainController : BaseController
     [SerializeField] private TerrainSettings settings;
 
     private int index;
+    private int initPointsCount;
     private Vector2 lastCoordinates;
+    
 
     public float LastCoordinatesX => lastCoordinates.x - settings.boundsXOffset;
-
-    private void Awake()
-    {
-        index = shape.spline.GetPointCount();
-        lastCoordinates = shape.spline.GetPosition(index - 1);
-    }
-
+    
     public override void Init()
     {
         GameRuntime.camera.WorldBoundsReachEvent += OnWorldBoundsReach;
+        initPointsCount = shape.spline.GetPointCount();
+        Reset();
         base.Init();
     }
 
@@ -41,5 +39,16 @@ public class TerrainController : BaseController
         return new Vector3(lastCoordinates.x + Random.Range(settings.xDeltaMin, settings.xDeltaMax),
             Mathf.Clamp(lastCoordinates.y + Random.Range(settings.yDeltaMin, settings.yDeltaMax),
                 settings.terrainHeightMin, settings.terrainHeightMax));
+    }
+
+    public void Reset()
+    {
+        for (var i = index-1; i >= initPointsCount; i--)
+        {
+            shape.spline.RemovePointAt(i);
+        }
+        
+        index = initPointsCount;
+        lastCoordinates = shape.spline.GetPosition(index - 1);
     }
 }

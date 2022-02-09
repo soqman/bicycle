@@ -3,7 +3,7 @@
 public class BaseController : MonoBehaviour
 {
     private bool isInited;
-    private bool isStarted;
+    protected bool isStarted;
     
     private void Update()
     {

@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
 
 public class CollisionsController : BaseController
 {
-    [SerializeField] private string playerHurtFxId;
+    public event Action PlayerHurtEvent;
 
     private Collision playerHurtCollision = new Collision(Tag.Player, Tag.Obstacle);
     
@@ -33,10 +33,15 @@ public class CollisionsController : BaseController
         CheckPlayer();
     }
 
+    public override void StartWork()
+    {
+        collisions.Clear();
+        base.StartWork();
+    }
+
     private void CheckPlayer()
     {
         if (!collisions.Contains(playerHurtCollision)) return;
-        
-        GameRuntime.fx.PlayFx(playerHurtFxId);
+        PlayerHurtEvent?.Invoke();
     }
 }
