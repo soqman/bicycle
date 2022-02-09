@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 526f70f7ec4d4f008be3fe934b290503, type: 3}
+  m_Name: PlayerHurtFx
+  m_EditorClassIdentifier: 
+  target: {r: 1, g: 0, b: 0, a: 1}
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 2
+      inWeight: 0
+      outWeight: 0.66209847
+    - serializedVersion: 3
+      time: 0.23594244
+      value: 0.60606575
+      inSlope: -2.4068718
+      outSlope: -2.4068718
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.28290462
+      outWeight: 0.45382327
+    - serializedVersion: 3
+      time: 0.6527736
+      value: 0.3811617
+      inSlope: -2.852463
+      outSlope: -2.852463
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.62774605
+      outWeight: 0.20393041
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.006971712
+      outSlope: -0.006971712
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.4161578
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  duration: 1

@@ -20,7 +20,7 @@ public class TerrainController : BaseController
 
     public override void Init()
     {
-        GameRuntime.camera.OnWorldBoundsReachEvent += OnWorldBoundsReach;
+        GameRuntime.camera.WorldBoundsReachEvent += OnWorldBoundsReach;
         base.Init();
     }
 
@@ -31,9 +31,8 @@ public class TerrainController : BaseController
 
     private void AddVertex()
     {
-        var position = CalculateNextVertex();
-        shape.spline.InsertPointAt(index, position);
-        lastCoordinates = position;
+        lastCoordinates = CalculateNextVertex();
+        shape.spline.InsertPointAt(index, lastCoordinates);
         index++;
     }
 

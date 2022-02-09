@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CameraController : BaseController
 {
-    public event Action OnWorldBoundsReachEvent;
+    public event Action WorldBoundsReachEvent;
     
     [SerializeField] private Transform target;
     [SerializeField] private Camera cam;
@@ -24,7 +24,7 @@ public class CameraController : BaseController
         FollowTarget();
         if (IsWorldBoundsReached())
         {
-            OnWorldBoundsReachEvent?.Invoke();
+            WorldBoundsReachEvent?.Invoke();
         }
     }
 

@@ -17,5 +17,5 @@ MonoBehaviour:
   yDeltaMin: -1.5
   yDeltaMax: 1.5
   terrainHeightMin: -3
-  terrainHeightMax: 2.5
+  terrainHeightMax: 2
   boundsXOffset: 1

@@ -11,6 +11,8 @@ public class GameRuntimeManager : MonoBehaviour
         controllers.Add(GameRuntime.engine = GetComponentInChildren<EngineController>(true));
         controllers.Add(GameRuntime.camera = GetComponentInChildren<CameraController>(true));
         controllers.Add(GameRuntime.terrain = GetComponentInChildren<TerrainController>(true));
+        controllers.Add(GameRuntime.fx = GetComponentInChildren<FxController>(true));
+        controllers.Add(GameRuntime.collisions = GetComponentInChildren<CollisionsController>(true));
     }
 
     private void Start()
@@ -26,4 +28,6 @@ public static class GameRuntime
     public static EngineController engine;
     public static CameraController camera;
     public static TerrainController terrain;
+    public static FxController fx;
+    public static CollisionsController collisions;
 }
