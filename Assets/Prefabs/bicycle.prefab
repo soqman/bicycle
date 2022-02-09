@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1153313393900772089}
   - component: {fileID: 4796049111919028075}
   - component: {fileID: 5302449139034727713}
-  - component: {fileID: 9191704443507315139}
   m_Layer: 0
   m_Name: wheel
   m_TagString: WheelBack
@@ -79,20 +78,6 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 359
---- !u!114 &9191704443507315139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1153313393900772095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ef92e0028dbd6468d5c9c56467a1c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tag: 2
-  targetTag: 3
 --- !u!1 &1153313394452428982
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +89,6 @@ GameObject:
   - component: {fileID: 1153313394452428976}
   - component: {fileID: 4796049111368090914}
   - component: {fileID: 5302449138478286696}
-  - component: {fileID: 1114861380496287162}
   m_Layer: 0
   m_Name: wheel
   m_TagString: WheelFront
@@ -172,20 +156,6 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 359
---- !u!114 &1114861380496287162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1153313394452428982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ef92e0028dbd6468d5c9c56467a1c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tag: 1
-  targetTag: 3
 --- !u!1 &1697888433778875671
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,9 +645,10 @@ GameObject:
   - component: {fileID: 8467264491228910506}
   - component: {fileID: 8623165086534359959}
   - component: {fileID: 6256787050993070963}
+  - component: {fileID: 3775825381137682205}
   m_Layer: 0
   m_Name: view
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -773,6 +744,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3775825381137682205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2795063628769354148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ef92e0028dbd6468d5c9c56467a1c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tag: 0
+  targetTag: 3
 --- !u!1 &3000333379194829452
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,7 +768,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3000333379194829450}
   - component: {fileID: 3584038684967017243}
-  - component: {fileID: 6982596838494977268}
+  - component: {fileID: 6110373300994337544}
   m_Layer: 0
   m_Name: pilot
   m_TagString: Untagged
@@ -827,8 +812,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!255 &6982596838494977268
-FixedJoint2D:
+--- !u!254 &6110373300994337544
+RelativeJoint2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -838,13 +823,14 @@ FixedJoint2D:
   serializedVersion: 4
   m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 2095557721085432094}
-  m_BreakForce: 250
-  m_BreakTorque: 250
-  m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
-  m_DampingRatio: 0
-  m_Frequency: 0
+  m_BreakForce: 300
+  m_BreakTorque: 300
+  m_MaxForce: 10000
+  m_MaxTorque: 10000
+  m_CorrectionScale: 0.3
+  m_AutoConfigureOffset: 0
+  m_LinearOffset: {x: 0, y: 0}
+  m_AngularOffset: 0
 --- !u!1 &3482729149802122578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,7 +1165,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5688200325573069020}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
