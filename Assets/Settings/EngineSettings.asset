@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191fe18e56f3469c85a7614d8f972ac4, type: 3}
   m_Name: EngineSettings
   m_EditorClassIdentifier: 
-  accelerateSpeed: 5
-  brakeSpeed: 100
+  accelerateSpeed: 10
+  brakeSpeed: 75
