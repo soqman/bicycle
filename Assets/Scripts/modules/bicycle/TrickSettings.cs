@@ -12,7 +12,6 @@ namespace modules.bicycle
         public List<CollisionsController.Tag> hasContactWithTerrain;
         public List<CollisionsController.Tag> hasNotContactWithTerrain;
         public float initThreshold;
-        public float pauseThreshold;
 
         public List<Collision> IncludeCollisions => hasContactWithTerrain.Select(item => new Collision(item, CollisionsController.Tag.Obstacle)).ToList();
         public List<Collision> ExcludeCollisions => hasNotContactWithTerrain.Select(item => new Collision(item, CollisionsController.Tag.Obstacle)).ToList();

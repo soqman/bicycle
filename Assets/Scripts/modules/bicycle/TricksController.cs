@@ -17,7 +17,6 @@ namespace modules.bicycle
 
         private HashSet<string> initedTricks = new HashSet<string>();
         private HashSet<string> activeTricks = new HashSet<string>();
-        private HashSet<string> pausedTricks = new HashSet<string>();
 
         private bool isDirty;
 
@@ -38,16 +37,16 @@ namespace modules.bicycle
         public override void StopWork()
         {
             base.StopWork();
+            
             initedTricks.Clear();
             activeTricks.Clear();
-            pausedTricks.Clear();
-            
+
             foreach (var item in tricksMap.Values)
             {
-                item.Reset();
+                item.initTime = 0f;
             }
 
-            isDirty = true;
+            TricksUpdatedEvent?.Invoke();
         }
 
         private void LateUpdate()
@@ -58,18 +57,16 @@ namespace modules.bicycle
         private void OnCollisionsUpdate()
         {
             var current = GetCurrentSuitableTricksIds();
-            CheckForTrickPause(current);
+            CheckForTrickEnd(current);
             foreach (var item in current)
             {
                 CheckForTrickInit(item);
-                CheckForTrickResume(item);
             }
         }
-
+        
         protected override void UpdateWork()
         {
             base.UpdateWork();
-            pausedTricks.ToList().ForEach(CheckForTrickEnd);
             initedTricks.ToList().ForEach(CheckForTrickStart);
             
             if(isDirty) TricksUpdatedEvent?.Invoke();
@@ -77,11 +74,10 @@ namespace modules.bicycle
 
         private void CheckForTrickInit(string id)
         {
-            if (!activeTricks.Contains(id))
-            {
-                activeTricks.Add(id);
-                tricksMap[id].Reset();
-            }
+            if (activeTricks.Contains(id) || initedTricks.Contains(id)) return;
+            
+            initedTricks.Add(id);
+            tricksMap[id].initTime = 0f;
         }
         
         private void CheckForTrickStart(string id)
@@ -95,39 +91,12 @@ namespace modules.bicycle
                 isDirty = true;
             }
         }
-        
-        private void CheckForTrickPause(ICollection<string> current)
+
+        private void CheckForTrickEnd(ICollection<string> current)
         {
-            foreach (var id in activeTricks.ToList())
-            {
-                if (!current.Contains(id))
-                {
-                    activeTricks.Remove(id);
-                    pausedTricks.Add(id);
-                }
-            }
-        }
-        
-        private void CheckForTrickResume(string id)
-        {
-            if (!pausedTricks.Contains(id))
-            {
-                activeTricks.Add(id);
-                pausedTricks.Remove(id);
-                tricksMap[id].Reset();
-            }
-        }
-        
-        private void CheckForTrickEnd(string id)
-        {
-            tricksMap[id].pauseTime += Time.deltaTime;
-            if (tricksMap[id].pauseTime > settingsMap[id].pauseThreshold)
-            {
-                pausedTricks.Remove(id);
-                tricksMap[id].Reset();
-                
-                isDirty = true;
-            }
+            activeTricks.RemoveWhere(x => !current.Contains(x));
+            initedTricks.RemoveWhere(x => !current.Contains(x));
+            isDirty = true;
         }
         
         private HashSet<string> GetCurrentSuitableTricksIds()

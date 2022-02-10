@@ -744,12 +744,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1255258623}
-  m_RootOrder: 0
+  m_Father: {fileID: 1001174413}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 25, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1845, y: -50}
   m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &865506274
@@ -1027,6 +1027,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1255258623}
+  - {fileID: 865506273}
   m_Father: {fileID: 736433003}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1299,8 +1300,6 @@ GameObject:
   - component: {fileID: 1255258623}
   - component: {fileID: 1255258627}
   - component: {fileID: 1255258626}
-  - component: {fileID: 1255258625}
-  - component: {fileID: 1255258624}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -1318,56 +1317,15 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 865506273}
+  m_Children: []
   m_Father: {fileID: 1001174413}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -50, y: -50}
-  m_SizeDelta: {x: 0, y: 100}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 1, y: 1}
---- !u!114 &1255258624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1255258622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 2
-  m_VerticalFit: 0
---- !u!114 &1255258625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1255258622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 25
-    m_Right: 25
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!114 &1255258626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2165,10 +2123,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1984221014}
     m_Modifications:
-    - target: {fileID: 3584038684967017243, guid: a4e326b5a9b8b6941919910d5dca8a8c, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5688200325573069020, guid: a4e326b5a9b8b6941919910d5dca8a8c, type: 3}
       propertyPath: m_Name
       value: bicycle
@@ -2217,20 +2171,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6110373300994337544, guid: a4e326b5a9b8b6941919910d5dca8a8c, type: 3}
-      propertyPath: m_BreakForce
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 6110373300994337544, guid: a4e326b5a9b8b6941919910d5dca8a8c, type: 3}
-      propertyPath: m_BreakTorque
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 6982596838494977268, guid: a4e326b5a9b8b6941919910d5dca8a8c, type: 3}
-      propertyPath: m_AutoConfigureConnectedAnchor
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6982596838494977268, guid: a4e326b5a9b8b6941919910d5dca8a8c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4e326b5a9b8b6941919910d5dca8a8c, type: 3}
 --- !u!212 &2095557723079349890 stripped
 SpriteRenderer:

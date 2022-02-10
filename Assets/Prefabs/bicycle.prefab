@@ -93,6 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tag: 2
   targetTag: 3
+  exitThreshold: 0.1
 --- !u!1 &1153313394452428982
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tag: 1
   targetTag: 3
+  exitThreshold: 0.1
 --- !u!1 &1697888433778875671
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,6 +790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tag: 0
   targetTag: 3
+  exitThreshold: 0
 --- !u!1 &3000333379194829452
 GameObject:
   m_ObjectHideFlags: 0

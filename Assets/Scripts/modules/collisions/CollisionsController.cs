@@ -21,20 +21,23 @@ namespace modules.collisions
 
         public void RegisterCollision(Collision collision)
         {
+            if (!isStarted) return;
             collisions.Add(collision);
             CollisionsUpdate?.Invoke();
         }
 
         public void UnregisterCollision(Collision collision)
         {
+            if (!isStarted) return;
             collisions.Remove(collision);
             CollisionsUpdate?.Invoke();
         }
-
-        public override void StartWork()
+        
+        public override void StopWork()
         {
             collisions.Clear();
-            base.StartWork();
+            CollisionsUpdate?.Invoke();
+            base.StopWork();
         }
 
         public bool CheckCollisions(List<Collision> includeCollisions, List<Collision> excludeCollisions = null)

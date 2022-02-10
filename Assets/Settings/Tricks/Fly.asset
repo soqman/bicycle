@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasContactWithTerrain: 
   hasNotContactWithTerrain: 0100000002000000
-  initThreshold: 1
-  pauseThreshold: 0.2
+  initThreshold: 0.5

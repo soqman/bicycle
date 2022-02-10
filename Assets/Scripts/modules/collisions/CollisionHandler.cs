@@ -1,3 +1,4 @@
+using System.Collections;
 using managers;
 using UnityEngine;
 
@@ -7,8 +8,33 @@ namespace modules.collisions
     {
         [SerializeField] private CollisionsController.Tag tag;
         [SerializeField] private CollisionsController.Tag targetTag;
+        [SerializeField] private float exitThreshold;
 
         private Collision collision;
+
+        private Coroutine routine;
+
+        private bool hasCollision;
+
+        public bool HasCollision
+        {
+            get => hasCollision;
+            set
+            {
+                if (hasCollision != value)
+                {
+                    hasCollision = value;
+                    if (hasCollision)
+                    {
+                        RegisterCollision();
+                    }
+                    else
+                    {
+                        UnregisterCollision();
+                    }
+                }
+            }
+        }
 
         private void Awake()
         {
@@ -18,15 +44,34 @@ namespace modules.collisions
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (!other.collider.CompareTag(targetTag.ToString())) return;
+            if (routine != null)
+            {
+                StopCoroutine(routine);
+                routine = null;
+            }
 
-            RegisterCollision();
+            HasCollision = true;
         }
 
         private void OnCollisionExit2D(Collision2D other)
         {
             if (!other.collider.CompareTag(targetTag.ToString())) return;
+            if (routine == null)
+            {
+                routine = StartCoroutine(CollisionExitRoutine());
+            }
+        }
 
-            UnregisterCollision();
+        private IEnumerator CollisionExitRoutine()
+        {
+            var elapsed = 0f;
+            while (elapsed < exitThreshold)
+            {
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            HasCollision = false;
         }
 
         private void RegisterCollision()
