@@ -15,7 +15,7 @@ namespace modules.input
         protected override void UpdateWork()
         {
             base.UpdateWork();
-        
+
             if (Input.GetMouseButtonDown(0))
             {
                 SetScreenSide(Input.mousePosition);
@@ -35,10 +35,10 @@ namespace modules.input
             {
                 isPositiveAxisHeld = false;
                 isNegativeAxisHeld = false;
-            
+
                 return;
             }
-        
+
             isPositiveAxisHeld = screenSide == ScreenSide.Right;
             isNegativeAxisHeld = screenSide == ScreenSide.Left;
         }

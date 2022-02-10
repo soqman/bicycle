@@ -12,7 +12,7 @@ namespace modules.world
 
         public float terrainHeightMin;
         public float terrainHeightMax;
-    
+
         public float boundsXOffset;
     }
 }

@@ -14,10 +14,10 @@ namespace modules.world
         private int index;
         private int initPointsCount;
         private Vector2 lastCoordinates;
-    
+
 
         public float LastCoordinatesX => lastCoordinates.x - settings.boundsXOffset;
-    
+
         public override void Init()
         {
             GameRuntime.camera.WorldBoundsReachEvent += OnWorldBoundsReach;
@@ -47,11 +47,11 @@ namespace modules.world
 
         public void Reset()
         {
-            for (var i = index-1; i >= initPointsCount; i--)
+            for (var i = index - 1; i >= initPointsCount; i--)
             {
                 shape.spline.RemovePointAt(i);
             }
-        
+
             index = initPointsCount;
             lastCoordinates = shape.spline.GetPosition(index - 1);
         }

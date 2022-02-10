@@ -1,6 +1,4 @@
-﻿using modules.bicycle;
-
-namespace modules.collisions
+﻿namespace modules.collisions
 {
     public class Collision
     {
@@ -12,7 +10,7 @@ namespace modules.collisions
             this.source = source;
             this.target = target;
         }
-    
+
         public override bool Equals(object obj)
         {
             if (!(obj is Collision collision)) return false;

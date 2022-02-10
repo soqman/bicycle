@@ -8,7 +8,7 @@ namespace modules.fx
     public class FxController : BaseController
     {
         [SerializeField] private GameObject root;
-    
+
         private Dictionary<string, BaseFx> map = new Dictionary<string, BaseFx>();
         private Dictionary<string, BaseFx> activeFxs = new Dictionary<string, BaseFx>();
 
@@ -17,20 +17,20 @@ namespace modules.fx
         public override void Init()
         {
             base.Init();
-        
+
             foreach (var item in root.GetComponentsInChildren<BaseFx>())
             {
                 map.Add(item.Id, item);
             }
         }
-    
+
         public void PlayFx(string id)
         {
             if (activeFxs.ContainsKey(id) || !map.TryGetValue(id, out var fx)) return;
-        
+
             activeFxs[id] = fx;
             fx.StopFxEvent += OnAutoStopFx;
-        
+
             fx.Play();
         }
 
@@ -47,7 +47,7 @@ namespace modules.fx
         public void StopFx(string id)
         {
             if (!activeFxs.TryGetValue(id, out var fx)) return;
-            
+
             fx.Stop();
             activeFxs.Remove(fx.Id);
         }

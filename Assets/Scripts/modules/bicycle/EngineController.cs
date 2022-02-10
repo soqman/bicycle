@@ -8,11 +8,11 @@ namespace modules.bicycle
     {
         [SerializeField] private Rigidbody2D gear;
         [SerializeField] private EngineSettings settings;
-    
+
         protected override void UpdateWork()
         {
             base.UpdateWork();
-        
+
             Accelerate();
             Brake();
         }

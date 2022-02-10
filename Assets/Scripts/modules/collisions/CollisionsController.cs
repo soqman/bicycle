@@ -32,7 +32,7 @@ namespace modules.collisions
             collisions.Remove(collision);
             CollisionsUpdate?.Invoke();
         }
-        
+
         public override void StopWork()
         {
             collisions.Clear();

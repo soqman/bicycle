@@ -11,7 +11,7 @@ namespace modules.bicycle
         [SerializeField] private Vector3 startPosition;
 
         public float Distance => Mathf.Max(Mathf.Abs(startPosition.x - pilot.position.x), 0f);
-    
+
         public override void Init()
         {
             Reset();
@@ -31,6 +31,7 @@ namespace modules.bicycle
                 item.angularDrag = 0f;
                 item.velocity = Vector2.zero;
             }
+
             bicycle.transform.localPosition = startPosition;
             bicycle.transform.localRotation = Quaternion.identity;
         }
@@ -45,6 +46,7 @@ namespace modules.bicycle
             {
                 joint = pilot.gameObject.AddComponent<RelativeJoint2D>();
             }
+
             joint.connectedBody = bicycle;
             joint.breakForce = 300;
             joint.breakTorque = 300f;

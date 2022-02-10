@@ -6,15 +6,15 @@ namespace common
     {
         private bool isInited;
         protected bool isStarted;
-    
+
         private void Update()
         {
             if (isStarted) UpdateWork();
         }
-    
+
         public virtual void Init()
         {
-            if(isInited) return;
+            if (isInited) return;
             isInited = true;
         }
 

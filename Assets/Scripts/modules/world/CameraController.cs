@@ -8,7 +8,7 @@ namespace modules.world
     public class CameraController : BaseController
     {
         public event Action WorldBoundsReachEvent;
-    
+
         [SerializeField] private Transform target;
         [SerializeField] private Camera cam;
 
@@ -20,11 +20,11 @@ namespace modules.world
             base.Init();
             position = cam.transform.position;
         }
-    
+
         protected override void UpdateWork()
         {
             base.UpdateWork();
-        
+
             FollowTarget();
             if (IsWorldBoundsReached())
             {
@@ -37,7 +37,7 @@ namespace modules.world
             position.x = target.position.x;
             cam.transform.position = position;
         }
-    
+
 
         private bool IsWorldBoundsReached()
         {
